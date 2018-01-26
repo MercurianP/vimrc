@@ -4,6 +4,3 @@
 [submodule "sources_non_forked/vim-interestingwords"]
 	path = sources_non_forked/vim-interestingwords
 	url = https://github.com/lfv89/vim-interestingwords.git
-[submodule "YouCompleteMe"]
-	path = YouCompleteMe
-	url = /Users/wuzhenzhong/.vim_runtime/sources_non_forked/YouCompleteMe
