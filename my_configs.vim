@@ -4,6 +4,17 @@ set number
 set ignorecase
 " 如果有一个大写字母，则切换到大小写敏感查找
 set smartcase
+" 鼠标模式可用
+set mouse＝a
+" emacs风格 插入模式使
+inoremap <C-e> <END> 
+inoremap <C-a> <HOME> 
+inoremap <C-f> <Right> 
+inoremap <C-b> <Left> 
+inoremap <M-f> <S-Right> 
+inoremap <M-b> <S-Left> 
+inoremap <M-n> <Down> 
+inoremap <M-p> <Up> 
 
 
 " *********************************************
@@ -33,3 +44,10 @@ nmap <F2> :TagbarToggle<CR>
  nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
  nnoremap <silent> n :call WordNavigation('forward')<cr>
  nnoremap <silent> N :call WordNavigation('backward')<cr>
+
+
+ " *********************************************
+ "  " vim-go插件属性
+ "  " ********************************************
+ "  去掉vim版本低的警告
+ let g:go_version_warning = 0
