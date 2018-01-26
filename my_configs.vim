@@ -5,16 +5,18 @@ set ignorecase
 " 如果有一个大写字母，则切换到大小写敏感查找
 set smartcase
 " 鼠标模式可用
-set mouse＝a
+set mouse=a
+"共享粘贴板
+set clipboard=unnamed 
 " emacs风格 插入模式使
 inoremap <C-e> <END> 
 inoremap <C-a> <HOME> 
-inoremap <C-f> <Right> 
+inoremap <C-f> <Right>
 inoremap <C-b> <Left> 
+inoremap <C-n> <Down> 
+inoremap <C-p> <Up> 
 inoremap <M-f> <S-Right> 
 inoremap <M-b> <S-Left> 
-inoremap <M-n> <Down> 
-inoremap <M-p> <Up> 
 
 
 " *********************************************
@@ -30,24 +32,62 @@ autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 nmap <F2> :TagbarToggle<CR>
 
 
- " *********************************************
- "  " NERD插件属性
- "  " ********************************************
- "  " Open a NERDTree
- nmap <F1> :NERDTreeToggle<cr>
+" *********************************************
+"  " NERD插件属性
+"  " ********************************************
+"  " Open a NERDTree
+nmap <F1> :NERDTreeToggle<cr>
 
- " *********************************************
- "  " 高亮多词插件
- "  " git clone git@github.com:lfv89/vim-interestingwords.git
- "  " *********************************************
- nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
- nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
- nnoremap <silent> n :call WordNavigation('forward')<cr>
- nnoremap <silent> N :call WordNavigation('backward')<cr>
+" *********************************************
+"  " 高亮多词插件
+"  " git clone git@github.com:lfv89/vim-interestingwords.git
+"  " *********************************************
+nnoremap <silent> <leader>k :call InterestingWords('n')<cr>
+nnoremap <silent> <leader>K :call UncolorAllWords()<cr>
+nnoremap <silent> n :call WordNavigation('forward')<cr>
+nnoremap <silent> N :call WordNavigation('backward')<cr>
 
 
- " *********************************************
- "  " vim-go插件属性
- "  " ********************************************
- "  去掉vim版本低的警告
- let g:go_version_warning = 0
+" *********************************************
+"  " vim-go插件属性
+"  " ********************************************
+"  去掉vim版本低的警告
+let g:go_version_warning = 0
+
+" *********************************************
+" " YCM插件相关
+"  " *********************************************
+set completeopt=longest,menu  "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
+autocmd InsertLeave * if pumvisible() == 0|pclose|endif   "离开插入模式后自动关闭预览窗口
+"上下左右键的行为 会显示其他信息
+inoremap <expr> <Down>     pumvisible() ? "\<C-n>" : "\<Down>"
+inoremap <expr> <Up>       pumvisible() ? "\<C-p>" : "\<Up>"
+inoremap <expr> <PageDown> pumvisible() ? "\<PageDown>\<C-p>\<C-n>" : "\<PageDown>"
+inoremap <expr> <PageUp>   pumvisible() ? "\<PageUp>\<C-p>\<C-n>" : "\<PageUp>"
+let g:ycm_global_ycm_extra_conf = '~/.vim_runtime/sources_non_forked/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
+" 不显示开启vim时检查ycm_extra_conf文件的信息
+let g:ycm_confirm_extra_conf=0
+" 开启基于tag的补全，可以在这之后添加需要的标签路径
+let g:ycm_collect_identifiers_from_tags_files=1
+"注释和字符串中的文字也会被收入补全
+let g:ycm_collect_identifiers_from_comments_and_strings = 0
+" 输入第2个字符开始补全
+let g:ycm_min_num_of_chars_for_completion=2
+" 禁止缓存匹配项,每次都重新生成匹配项
+let g:ycm_cache_omnifunc=0
+let g:ycm_seed_identifiers_with_syntax=1
+let g:ycm_complete_in_comments = 1
+let g:ycm_complete_in_strings = 1
+" 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
+"let g:ycm_key_invoke_completion = '<M-;>
+" 跳转到定义处
+" 往前跳和往后跳的快捷键为Ctrl+O以及Ctrl+I
+map <leader>jg :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>jj :YcmCompleter GoToDefinitionElseDeclaration<CR>
+" 默认tab、s-tab和自动补全冲突
+let g:ycm_key_list_select_completion = ['<TAB>', '<c-n>', '<Down>']
+let g:ycm_key_list_previous_completion = ['<S-TAB>', '<c-p>', '<Up>']
+let g:ycm_auto_trigger = 1
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
