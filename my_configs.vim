@@ -55,6 +55,14 @@ nnoremap <silent> N :call WordNavigation('backward')<cr>
 let g:go_version_warning = 0
 
 " *********************************************
+"  " syntastic插件属性
+"  " ********************************************
+"  打开文件时不自动进行检查
+let g:syntastic_check_on_open = 0
+let g:syntastic_cpp_compiler = 'clang++'
+let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
+" *********************************************
 " " YCM插件相关
 "  " *********************************************
 set completeopt=longest,menu  "让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
@@ -82,9 +90,9 @@ let g:ycm_complete_in_strings = 1
 "let g:ycm_key_invoke_completion = '<M-;>
 " 跳转到定义处
 " 往前跳和往后跳的快捷键为Ctrl+O以及Ctrl+I
-map <leader>jg :YcmCompleter GoToDefinition<CR>
-nnoremap <leader>jd :YcmCompleter GoToDeclaration<CR>
-nnoremap <leader>jj :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>j :YcmCompleter GoToDefinition<CR>
+nnoremap <leader>jj :YcmCompleter GoToDeclaration<CR>
+nnoremap <leader>jk :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " 默认tab、s-tab和自动补全冲突
 let g:ycm_key_list_select_completion = ['<TAB>', '<c-n>', '<Down>']
 let g:ycm_key_list_previous_completion = ['<S-TAB>', '<c-p>', '<Up>']
