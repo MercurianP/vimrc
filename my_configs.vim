@@ -6,8 +6,10 @@ set ignorecase
 set smartcase
 " 鼠标模式可用
 set mouse=a
-"共享粘贴板
+" 共享粘贴板
 set clipboard=unnamed 
+" 当前行高亮
+"set cursorline
 " emacs风格 插入模式使
 inoremap <C-e> <END> 
 inoremap <C-a> <HOME> 
@@ -87,7 +89,10 @@ let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
 " 修改对C函数的补全快捷键，默认是CTRL + space，修改为ALT + ;
-"let g:ycm_key_invoke_completion = '<M-;>
+" let g:ycm_key_invoke_completion = '<M-;>
+" 关闭语法错误检测提示
+let g:ycm_enable_diagnostic_signs = 0
+let g:ycm_enable_diagnostic_highlighting = 0
 " 跳转到定义处
 " 往前跳和往后跳的快捷键为Ctrl+O以及Ctrl+I
 map <leader>j :YcmCompleter GoToDefinition<CR>
