@@ -146,7 +146,7 @@ call append(line(".")+1, "\# Author: ".$author_name)
 call append(line(".")+2, "\# mail: ".$author_email)  
 call append(line(".")+3, "\# Created Time: ".strftime("%c"))  
 call append(line(".")+4, "\#=============================================================")  
-call append(line(".")+5, "\#Showtime!")  
+call append(line(".")+5, "\#=0=!")  
 call append(line(".")+6, "")  
 else
 call setline(1,"/*\###############################################################")  
@@ -155,7 +155,12 @@ call append(line(".")+1, "\# Author: ".$author_name)
 call append(line(".")+2, "\# mail: ".$author_email)  
 call append(line(".")+3, "\# Created Time: ".strftime("%c"))  
 call append(line(".")+4, "\#=============================================================")  
-call append(line(".")+5, "\#Showtime!")  
+call append(line(".")+5, "\#La la la!")  
 call append(line(".")+6, "\*/")  
 endif  
 endfunc 
+
+" 针对conf和rtmp后缀的配置文件，加上nginx语法高亮
+autocmd BufNewFile,BufRead *.conf set syntax=nginx
+autocmd BufNewFile,BufRead *.rtmp set syntax=nginx
+
