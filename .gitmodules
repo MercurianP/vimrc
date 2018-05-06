@@ -22,3 +22,9 @@
 [submodule "sources_forked/gruvbox"]
 	path = sources_forked/gruvbox
 	url = https://github.com/morhetz/gruvbox.git
+[submodule "sources_forked/vim-hybrid"]
+	path = sources_forked/vim-hybrid
+	url = https://github.com/w0ng/vim-hybrid.git
+[submodule "sources_forked/YCM-Generator"]
+	path = sources_forked/YCM-Generator
+	url = https://github.com/rdnetto/YCM-Generator.git

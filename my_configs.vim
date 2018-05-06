@@ -43,8 +43,8 @@ nmap <F2> :TagbarToggle<CR>
 
 " *********************************************
 "  " NERD插件属性
-"  " ********************************************
 "  " Open a NERDTree
+" ********************************************
 nmap <F3> :NERDTreeToggle<cr>
 let NERDTreeWinPos ="left"
 
@@ -123,6 +123,16 @@ let g:ycm_server_log_level = 'debug'
 
 
 " *********************************************
+"  " YCM .conf插件属性
+" ********************************************
+nmap <F4> :YcmGenerateConfig<cr>
+if filereadable("./.ycm_extra_conf.py")
+    echo "./.ycm_extra_conf.py"
+    let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
+endif
+
+
+" *********************************************
 " " autocmd 自动加入文件头
 " *********************************************
 autocmd BufNewFile *.py,*.sh,*.c,*.cc,*.h,*.go, exec ":call SetMyTitle123()"  
@@ -198,6 +208,13 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " " gruvbox
 " *********************************************
 colorscheme gruvbox
+set background=dark    " Setting dark mode
+
+
+" *********************************************
+" " vim-hybrid
+" *********************************************
+colorscheme hybrid
 set background=dark    " Setting dark mode
 
 
