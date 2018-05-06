@@ -7,3 +7,18 @@
 [submodule "sources_non_forked/YouCompleteMe"]
 	path = sources_non_forked/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule "sources_non_forked/vim-syntax-extra"]
+	path = sources_non_forked/vim-syntax-extra
+	url = https://github.com/justinmk/vim-syntax-extra
+[submodule "sources_forked/indentLine"]
+	path = sources_forked/indentLine
+	url = https://github.com/Yggdroot/indentLine
+[submodule "sources_forked/vim-cpp-enhanced-highlight"]
+	path = sources_forked/vim-cpp-enhanced-highlight
+	url = https://github.com/octol/vim-cpp-enhanced-highlight.git
+[submodule "sources_forked/vim-one"]
+	path = sources_forked/vim-one
+	url = https://github.com/rakr/vim-one.git
+[submodule "sources_forked/gruvbox"]
+	path = sources_forked/gruvbox
+	url = https://github.com/morhetz/gruvbox.git

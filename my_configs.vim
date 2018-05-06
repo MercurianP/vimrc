@@ -5,7 +5,7 @@ set ignorecase
 " 如果有一个大写字母，则切换到大小写敏感查找
 set smartcase
 " 鼠标模式可用
-set mouse=v
+set mouse=a
 " 共享粘贴板
 set clipboard=unnamed 
 " 当前行高亮
@@ -19,8 +19,13 @@ inoremap <C-f> <Right>
 inoremap <C-b> <Left> 
 inoremap <C-n> <Down> 
 inoremap <C-p> <Up> 
-inoremap <M-f> <S-Right> 
-inoremap <M-b> <S-Left> 
+" inoremap <M-f> <S-Right> 
+" inoremap <M-b> <S-Left> 
+" code style， tab用空格代替
+set ts=4
+set expandtab
+
+""""""""""""""end configs"""""""""""""""""
 
 
 " *********************************************
@@ -40,7 +45,8 @@ nmap <F2> :TagbarToggle<CR>
 "  " NERD插件属性
 "  " ********************************************
 "  " Open a NERDTree
-nmap <F1> :NERDTreeToggle<cr>
+nmap <F3> :NERDTreeToggle<cr>
+let NERDTreeWinPos ="left"
 
 " *********************************************
 "  " 高亮多词插件
@@ -64,6 +70,7 @@ let g:go_highlight_structs = 1
 let g:go_highlight_operators = 1
 let g:go_highlight_build_constraints = 1
 
+
 " *********************************************
 "  " syntastic插件属性
 "  " ********************************************
@@ -71,6 +78,7 @@ let g:go_highlight_build_constraints = 1
 let g:syntastic_check_on_open = 0
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++11 -stdlib=libc++'
+
 
 " *********************************************
 " " YCM插件相关
@@ -92,7 +100,7 @@ let g:ycm_collect_identifiers_from_comments_and_strings = 0
 " 输入第2个字符开始补全
 let g:ycm_min_num_of_chars_for_completion=2
 " 禁止缓存匹配项,每次都重新生成匹配项
-let g:ycm_cache_omnifunc=0
+let g:ycm_cache_omnifunc=1
 let g:ycm_seed_identifiers_with_syntax=1
 let g:ycm_complete_in_comments = 1
 let g:ycm_complete_in_strings = 1
@@ -113,14 +121,15 @@ let g:ycm_auto_trigger = 1
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
 
+
 " *********************************************
 " " autocmd 自动加入文件头
 " *********************************************
-autocmd BufNewFile *.py,*.sh,*.c,*.cc,*.h,*.go, exec ":call SetMyTitle()"  
+autocmd BufNewFile *.py,*.sh,*.c,*.cc,*.h,*.go, exec ":call SetMyTitle123()"  
 let $author_name = "wuzhenzhong"  
 let $author_email = "jt26wzz@icloud.com"  
   
-func SetMyTitle()  
+func SetMyTitle123()  
 if &filetype == 'sh'  
 call setline(1,"\##############################################################")  
 call append(line("."), "\# File Name: ".expand("%"))  
@@ -160,7 +169,70 @@ call append(line(".")+6, "\*/")
 endif  
 endfunc 
 
+
+" *********************************************
+" " nginx.vim
+" *********************************************
 " 针对conf和rtmp后缀的配置文件，加上nginx语法高亮
 autocmd BufNewFile,BufRead *.conf set syntax=nginx
 autocmd BufNewFile,BufRead *.rtmp set syntax=nginx
 
+
+" *********************************************
+" " vim-multiple-cursors
+" *********************************************
+let g:multi_cursor_use_default_mapping=0
+
+" Default mapping
+let g:multi_cursor_start_word_key      = '<C-a>'
+let g:multi_cursor_select_all_word_key = '<C-m>'
+let g:multi_cursor_start_key           = 'g<C-n>'
+let g:multi_cursor_select_all_key      = 'g<A-n>'
+let g:multi_cursor_next_key            = '<C-h>'
+let g:multi_cursor_prev_key            = '<C-l>'
+let g:multi_cursor_skip_key            = '<C-q>'
+let g:multi_cursor_quit_key            = '<Esc>'
+
+
+" *********************************************
+" " gruvbox
+" *********************************************
+colorscheme gruvbox
+set background=dark    " Setting dark mode
+
+
+" *********************************************
+" " vim-cpp-enhanced-highlight
+" *********************************************
+" let g:cpp_class_scope_highlight = 1
+" let g:cpp_member_variable_highlight = 1
+" let g:cpp_class_decl_highlight = 1
+" let g:cpp_experimental_simple_template_highlight = 1
+" let g:cpp_experimental_template_highlight = 1
+" let g:cpp_concepts_highlight = 1
+" let g:cpp_no_function_highlight = 1
+
+
+" *********************************************
+" " vim-one
+" *********************************************
+" let g:airline_theme='one'
+" colorscheme one
+" set background=dark
+" let g:one_allow_italics = 1
+" nnoremap <leader>hi :so $VIMRUNTIME/syntax/hitest.vim<cr>
+"Use 24-bit (true-color) mode in Vim/Neovim when outside tmux.
+"If you're using tmux version 2.2 or later, you can remove the outermost $TMUX check and use tmux's 24-bit color support
+"(see < http://sunaku.github.io/tmux-24bit-color.html#usage > for more information.)
+" if (empty($TMUX))
+  " if (has("nvim"))
+  "For Neovim 0.1.3 and 0.1.4 < https://github.com/neovim/neovim/pull/2198 >
+  " let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+  " endif
+  "For Neovim > 0.1.5 and Vim > patch 7.4.1799 < https://github.com/vim/vim/commit/61be73bb0f965a895bfb064ea3e55476ac175162 >
+  "Based on Vim patch 7.4.1770 (`guicolors` option) < https://github.com/vim/vim/commit/8a633e3427b47286869aa4b96f2bfc1fe65b25cd >
+  " < https://github.com/neovim/neovim/wiki/Following-HEAD#20160511 >
+  " if (has("termguicolors"))
+    " set termguicolors
+  " endif
+" endif
