@@ -24,6 +24,17 @@ inoremap <C-p> <Up>
 " code style， tab用空格代替
 set ts=4
 set expandtab
+" 空格键+数字 跳转tab页
+nnoremap <silent> <leader>1 1gt
+nnoremap <silent> <leader>2 2gt
+nnoremap <silent> <leader>3 3gt
+nnoremap <silent> <leader>4 4gt
+nnoremap <silent> <leader>5 5gt
+nnoremap <silent> <leader>6 6gt
+nnoremap <silent> <leader>7 7gt
+nnoremap <silent> <leader>8 8gt
+nnoremap <silent> <leader>9 9gt
+
 
 """"""""""""""end configs"""""""""""""""""
 
@@ -214,8 +225,8 @@ set background=dark    " Setting dark mode
 " *********************************************
 " " vim-hybrid
 " *********************************************
-colorscheme hybrid
-set background=dark    " Setting dark mode
+" colorscheme hybrid
+" set background=dark    " Setting dark mode
 
 
 " *********************************************
