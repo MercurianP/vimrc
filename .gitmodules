@@ -7,8 +7,8 @@
 [submodule "sources_non_forked/YouCompleteMe"]
 	path = sources_non_forked/YouCompleteMe
 	url = https://github.com/Valloric/YouCompleteMe.git
-[submodule "sources_non_forked/vim-syntax-extra"]
-	path = sources_non_forked/vim-syntax-extra
+[submodule "sources_forked/vim-syntax-extra"]
+	path = sources_forked/vim-syntax-extra
 	url = https://github.com/justinmk/vim-syntax-extra
 [submodule "sources_forked/indentLine"]
 	path = sources_forked/indentLine
