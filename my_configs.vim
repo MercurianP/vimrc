@@ -7,20 +7,22 @@ set smartcase
 " 鼠标模式可用
 set mouse=a
 " 共享粘贴板
-set clipboard=unnamed 
+set clipboard=unnamed
 " 当前行高亮
 "set cursorline
 " 设置粘贴模式快捷键
 set pastetoggle=<F9>
+" 删除行末空格
+nmap <leader><Space> :%s/\s\+$//<cr>
 " emacs风格 插入模式使
-inoremap <C-e> <END> 
-inoremap <C-a> <HOME> 
+inoremap <C-e> <END>
+inoremap <C-a> <HOME>
 inoremap <C-f> <Right>
-inoremap <C-b> <Left> 
-inoremap <C-n> <Down> 
-inoremap <C-p> <Up> 
-" inoremap <M-f> <S-Right> 
-" inoremap <M-b> <S-Left> 
+inoremap <C-b> <Left>
+inoremap <C-n> <Down>
+inoremap <C-p> <Up>
+" inoremap <M-f> <S-Right>
+" inoremap <M-b> <S-Left>
 " code style， tab用空格代替
 set ts=4
 set expandtab
@@ -120,6 +122,8 @@ let g:ycm_complete_in_strings = 1
 " 关闭语法错误检测提示
 let g:ycm_enable_diagnostic_signs = 0
 let g:ycm_enable_diagnostic_highlighting = 0
+" let g:ycm_error_symbol='>>'
+" let g:ycm_warning_symbol='>*'
 " 跳转到定义处
 " 往前跳和往后跳的快捷键为Ctrl+O以及Ctrl+I
 map <leader>j :YcmCompleter GoToDefinition<CR>
@@ -146,49 +150,50 @@ endif
 " *********************************************
 " " autocmd 自动加入文件头
 " *********************************************
-autocmd BufNewFile *.py,*.sh,*.c,*.cc,*.h,*.go, exec ":call SetMyTitle123()"  
-let $author_name = "wuzhenzhong"  
-let $author_email = "jt26wzz@icloud.com"  
-  
-func SetMyTitle123()  
-if &filetype == 'sh'  
-call setline(1,"\##############################################################")  
-call append(line("."), "\# File Name: ".expand("%"))  
-call append(line(".")+1, "\# Author: ".$author_name)  
-call append(line(".")+2, "\# mail: ".$author_email)  
-call append(line(".")+3, "\# Created Time: ".strftime("%c"))  
-call append(line(".")+4, "\#=============================================================")  
-call append(line(".")+5, "\#!/bin/bash")  
-call append(line(".")+6, "")  
-elseif &filetype == 'python' 
-call setline(1,"\###############################################################")  
-call append(line("."), "\# File Name: ".expand("%"))  
-call append(line(".")+1, "\# Author: ".$author_name)  
-call append(line(".")+2, "\# mail: ".$author_email)  
-call append(line(".")+3, "\# Created Time: ".strftime("%c"))  
-call append(line(".")+4, "\#=============================================================")  
-call append(line(".")+5, "\#!/usr/bin/python")  
-call append(line(".")+6, "")  
+autocmd BufNewFile *.py,*.sh,*.c,*.cc,*.h,*.go, exec ":call SetMyTitle123()"
+let $author_name = "wuzhenzhong"
+let $author_email = "jt26wzz@icloud.com"
+
+func SetMyTitle123()
+if &filetype == 'sh'
+call setline(1,"\##############################################################")
+call append(line("."), "\# File Name: ".expand("%"))
+call append(line(".")+1, "\# Author: ".$author_name)
+call append(line(".")+2, "\# mail: ".$author_email)
+call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+call append(line(".")+4, "\#=============================================================")
+call append(line(".")+5, "\#!/bin/bash")
+call append(line(".")+6, "")
+elseif &filetype == 'python'
+call setline(1,"\# -*- coding: utf-8 -*-")
+call setline(1,"\###############################################################")
+call append(line("."), "\# File Name: ".expand("%"))
+call append(line(".")+1, "\# Author: ".$author_name)
+call append(line(".")+2, "\# mail: ".$author_email)
+call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+call append(line(".")+4, "\#=============================================================")
+call append(line(".")+5, "\#!/usr/bin/python")
+call append(line(".")+6, "")
 elseif &filetype == 'conf'
-call setline(1,"\###############################################################")  
-call append(line("."), "\# File Name: ".expand("%"))  
-call append(line(".")+1, "\# Author: ".$author_name)  
-call append(line(".")+2, "\# mail: ".$author_email)  
-call append(line(".")+3, "\# Created Time: ".strftime("%c"))  
-call append(line(".")+4, "\#=============================================================")  
-call append(line(".")+5, "\#=0=!")  
-call append(line(".")+6, "")  
+call setline(1,"\###############################################################")
+call append(line("."), "\# File Name: ".expand("%"))
+call append(line(".")+1, "\# Author: ".$author_name)
+call append(line(".")+2, "\# mail: ".$author_email)
+call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+call append(line(".")+4, "\#=============================================================")
+call append(line(".")+5, "\#=0=!")
+call append(line(".")+6, "")
 else
-call setline(1,"/*\###############################################################")  
-call append(line("."), "\# File Name: ".expand("%"))  
-call append(line(".")+1, "\# Author: ".$author_name)  
-call append(line(".")+2, "\# mail: ".$author_email)  
-call append(line(".")+3, "\# Created Time: ".strftime("%c"))  
-call append(line(".")+4, "\#=============================================================")  
-call append(line(".")+5, "\#La la la!")  
-call append(line(".")+6, "\*/")  
-endif  
-endfunc 
+call setline(1,"/*\###############################################################")
+call append(line("."), "\# File Name: ".expand("%"))
+call append(line(".")+1, "\# Author: ".$author_name)
+call append(line(".")+2, "\# mail: ".$author_email)
+call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+call append(line(".")+4, "\#=============================================================")
+call append(line(".")+5, "\#La la la!")
+call append(line(".")+6, "\*/")
+endif
+endfunc
 
 
 " *********************************************
