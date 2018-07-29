@@ -166,7 +166,6 @@ call append(line(".")+5, "\#!/bin/bash")
 call append(line(".")+6, "")
 elseif &filetype == 'python'
 call setline(1,"\# -*- coding: utf-8 -*-")
-call setline(1,"\###############################################################")
 call append(line("."), "\# File Name: ".expand("%"))
 call append(line(".")+1, "\# Author: ".$author_name)
 call append(line(".")+2, "\# mail: ".$author_email)
