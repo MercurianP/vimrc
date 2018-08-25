@@ -36,6 +36,10 @@ nnoremap <silent> <leader>6 6gt
 nnoremap <silent> <leader>7 7gt
 nnoremap <silent> <leader>8 8gt
 nnoremap <silent> <leader>9 9gt
+" ctags
+set autochdir
+set tags=tags;
+
 
 
 """"""""""""""end configs"""""""""""""""""
@@ -140,7 +144,7 @@ let g:ycm_server_log_level = 'debug'
 " *********************************************
 "  " YCM .conf插件属性
 " ********************************************
-nmap <F4> :YcmGenerateConfig<cr>
+nmap <F5> :YcmGenerateConfig<cr>
 if filereadable("./.ycm_extra_conf.py")
     echo "./.ycm_extra_conf.py"
     let g:ycm_global_ycm_extra_conf = './.ycm_extra_conf.py'
