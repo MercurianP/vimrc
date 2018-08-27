@@ -169,12 +169,22 @@ call append(line(".")+4, "set -e -x")
 call append(line(".")+5, "")
 elseif &filetype == 'python'
 call setline(1,"\# -*- coding: utf-8 -*-")
+<<<<<<< HEAD
 call append(line("."), "\#!/usr/bin/python")
 call append(line(".")+1, "\# File Name: ".expand("%"))
 call append(line(".")+2, "\# Author: ".$author_name)
 call append(line(".")+3, "\# mail: ".$author_email)
 call append(line(".")+4, "\# Created Time: ".strftime("%c"))
 call append(line(".")+5, "")
+=======
+call append(line("."), "\# File Name: ".expand("%"))
+call append(line(".")+1, "\# Author: ".$author_name)
+call append(line(".")+2, "\# mail: ".$author_email)
+call append(line(".")+3, "\# Created Time: ".strftime("%c"))
+call append(line(".")+4, "\#=============================================================")
+call append(line(".")+5, "\#!/usr/bin/python")
+call append(line(".")+6, "")
+>>>>>>> 0308cfb0f2c856b15ad207a397406fd2d1bd3748
 elseif &filetype == 'conf'
 call setline(1,"\###############################################################")
 call append(line("."), "\# File Name: ".expand("%"))
