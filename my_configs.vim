@@ -46,7 +46,7 @@ set tags=tags;
 
 
 " *********************************************
-"  " CTAGS插件属性
+"  " CTAGS 插件属性
    " git clone git@github.com:majutsushi/tagbar.git
 " *********************************************
 " 启动时自动focus
@@ -56,6 +56,31 @@ let g:tagbar_autofocus=1
 " 启动指定文件时自动开启tagbar
 autocmd BufReadPost *.cpp,*.c,*.h,*.hpp,*.cc,*.cxx call tagbar#autoopen()
 nmap <F2> :TagbarToggle<CR>
+
+
+" *********************************************
+"  " vim-gutentags 插件属性
+"  " git clone https://github.com/ludovicchabant/vim-gutentags.git
+" *********************************************
+set tags=./tags;,tags
+" gutentags搜索工程目录的标志，碰到这些文件/目录名就停止向上一级目录递归 "
+let g:gutentags_project_root = ['.root', '.svn', '.git', '.project']
+
+" 所生成的数据文件的名称 "
+let g:gutentags_ctags_tagfile = '.tags'
+
+" 将自动生成的 tags 文件全部放入 ~/.cache/tags 目录中，避免污染工程目录 "
+let s:vim_tags = expand('~/.cache/tags')
+let g:gutentags_cache_dir = s:vim_tags
+" 检测 ~/.cache/tags 不存在就新建 "
+if !isdirectory(s:vim_tags)
+   silent! call mkdir(s:vim_tags, 'p')
+endif
+
+" 配置 ctags 的参数 "
+let g:gutentags_ctags_extra_args = ['--fields=+niazS', '--extra=+q']
+let g:gutentags_ctags_extra_args += ['--c++-kinds=+pxI']
+let g:gutentags_ctags_extra_args += ['--c-kinds=+px']
 
 
 " *********************************************
