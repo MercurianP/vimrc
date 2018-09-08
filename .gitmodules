@@ -31,3 +31,9 @@
 [submodule "sources_forked/vim-gutentags"]
 	path = sources_forked/vim-gutentags
 	url = https://github.com/ludovicchabant/vim-gutentags.git
+[submodule "sources_forked/ale"]
+	path = sources_forked/ale
+	url = https://github.com/w0rp/ale.git
+[submodule "sources_forked/vim-colorschemes"]
+	path = sources_forked/vim-colorschemes
+	url = https://github.com/flazz/vim-colorschemes.git

@@ -194,22 +194,12 @@ call append(line(".")+4, "set -e -x")
 call append(line(".")+5, "")
 elseif &filetype == 'python'
 call setline(1,"\# -*- coding: utf-8 -*-")
-<<<<<<< HEAD
 call append(line("."), "\#!/usr/bin/python")
 call append(line(".")+1, "\# File Name: ".expand("%"))
 call append(line(".")+2, "\# Author: ".$author_name)
 call append(line(".")+3, "\# mail: ".$author_email)
 call append(line(".")+4, "\# Created Time: ".strftime("%c"))
 call append(line(".")+5, "")
-=======
-call append(line("."), "\# File Name: ".expand("%"))
-call append(line(".")+1, "\# Author: ".$author_name)
-call append(line(".")+2, "\# mail: ".$author_email)
-call append(line(".")+3, "\# Created Time: ".strftime("%c"))
-call append(line(".")+4, "\#=============================================================")
-call append(line(".")+5, "\#!/usr/bin/python")
-call append(line(".")+6, "")
->>>>>>> 0308cfb0f2c856b15ad207a397406fd2d1bd3748
 elseif &filetype == 'conf'
 call setline(1,"\###############################################################")
 call append(line("."), "\# File Name: ".expand("%"))
@@ -259,8 +249,8 @@ let g:multi_cursor_quit_key            = '<Esc>'
 " *********************************************
 " " gruvbox
 " *********************************************
-colorscheme gruvbox
-set background=dark    " Setting dark mode
+"colorscheme gruvbox
+"set background=dark    " Setting dark mode
 
 
 " *********************************************
@@ -273,13 +263,56 @@ set background=dark    " Setting dark mode
 " *********************************************
 " " vim-cpp-enhanced-highlight
 " *********************************************
-" let g:cpp_class_scope_highlight = 1
-" let g:cpp_member_variable_highlight = 1
-" let g:cpp_class_decl_highlight = 1
-" let g:cpp_experimental_simple_template_highlight = 1
-" let g:cpp_experimental_template_highlight = 1
-" let g:cpp_concepts_highlight = 1
+ let g:cpp_class_scope_highlight = 1
+ let g:cpp_member_variable_highlight = 1
+ let g:cpp_class_decl_highlight = 1
+ let g:cpp_experimental_simple_template_highlight = 1
+ let g:cpp_experimental_template_highlight = 1
+ let g:cpp_concepts_highlight = 1
 " let g:cpp_no_function_highlight = 1
+colorscheme molokai
+
+
+" *********************************************
+" " ale
+" *********************************************
+let g:ale_linters_explicit = 1
+let g:ale_completion_delay = 500
+let g:ale_echo_delay = 20
+let g:ale_lint_delay = 500
+"自定义error和warning图标
+let g:ale_sign_error = '✗'
+let g:ale_sign_warning = '⚡'
+"在vim自带的状态栏中整合ale
+let g:ale_statusline_format = ['✗ %d', '⚡ %d', '✔ OK']
+"显示Linter名称,出错或警告等相关信息
+let g:ale_echo_msg_error_str = 'E'
+let g:ale_echo_msg_warning_str = 'W'
+let g:ale_echo_msg_format = '[%linter%] %code: %%s'
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_on_insert_leave = 1
+let g:airline#extensions#ale#enabled = 1
+"<Leader>s触发/关闭语法检查
+nmap <Leader>s :ALEToggle<CR>
+"<Leader>d查看错误或警告的详细信息
+nmap <Leader>d :ALEDetail<CR>
+"普通模式下，sp前往上一个错误或警告，sn前往下一个错误或警告
+nmap sp <Plug>(ale_previous_wrap)
+nmap sn <Plug>(ale_next_wrap)
+
+let g:ale_c_clang_options = '-std=c99 -Wall -O2 -I ~/Code/nginx/src/core
+\ -I ~/Code/nginx/src/http -I  ~/Code/nginx/src/stream -I ~/Code/nginx/src/event
+\ -I ~/Code/nginx-1.9.2/objs/ -I ~/Code/nginx/src/os/unix'
+let g:ale_c_gcc_options = '-Wall -O2 -std=c99'
+let g:ale_cpp_gcc_options = '-Wall -O2 -std=c++14'
+let g:ale_c_cppcheck_options = ''
+let g:ale_cpp_cppcheck_options = ''
+
+let g:ale_linters = {
+\   'c++': ['clang'],
+\   'c': ['clang'],
+\   'python': ['pylint'],
+\}
 
 
 " *********************************************
