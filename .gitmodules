@@ -37,3 +37,6 @@
 [submodule "sources_forked/vim-colorschemes"]
 	path = sources_forked/vim-colorschemes
 	url = https://github.com/flazz/vim-colorschemes.git
+[submodule "sources_forked/sources_forked/ale"]
+	path = sources_forked/sources_forked/ale
+	url = https://github.com/w0rp/ale.git
